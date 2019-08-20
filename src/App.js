@@ -1,21 +1,7 @@
-import React, { Component } from 'react';
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: 'React',
-      items: []
-    };
-  }
+import React from 'react';
+import LayoutComponent from './components/layout.component';
+import Router from './Router';
 
-
-  render() {
-    return (
-      <div>
-        Batman
-      </div>
-    );
-  }
-}
-
-export default App;
+export default () => <LayoutComponent>
+    <Router />
+</LayoutComponent>;
