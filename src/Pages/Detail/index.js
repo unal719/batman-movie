@@ -25,7 +25,6 @@ class Detail extends PureComponent {
             return (
                 <>
                     <h5>{name}</h5>
-                    {/* <p>{summary}</p> */}
                     <div dangerouslySetInnerHTML={{ __html: summary }} />
                     <img src={original} alt={`${name} images goes here`} />
                 </>
