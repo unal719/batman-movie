@@ -1,27 +1,40 @@
 import React, { PureComponent } from 'react';
-import http from '../../utils/http'
-
+// import http from '../../utils/http'
+import { connect } from 'react-redux';
+import { getMovieDetailStart } from '../../actions';
 class Detail extends PureComponent {
-    constructor() {
-        super();
-        this.state = {
-            detail: null
-        }
-    }
+
+    /**
+     * before redux
+     */
+    // constructor() {
+    //     super();
+    //     this.state = {
+    //         detail: null
+    //     }
+    // }
 
     componentDidMount() {
         const { match: { params: { id } } } = this.props;
-        http.getMovieDetail(id)
-            .then(detail =>
-                this.setState({ detail })
-            );
+        // http.getMovieDetail(id)
+        //     .then(detail =>
+        //         this.setState({ detail })
+        //     );
+
+        const { getMovieDetailStartAction } = this.props;
+        getMovieDetailStartAction(id);
+
     }
 
     render() {
-        const { detail } = this.state;
+        /**
+         * before redux
+         */
+        // const { detail } = this.state;
+        const { movie } = this.props;
 
-        if (detail) {
-            const { name, image: { original }, summary } = detail;
+        if (movie) {
+            const { name, image: { original }, summary } = movie;
             return (
                 <>
                     <h5>{name}</h5>
@@ -33,4 +46,6 @@ class Detail extends PureComponent {
         return <div>Loading</div>
     }
 }
-export default Detail;
+
+const initMapStateToProps = ({ movie }) => ({ movie });
+export default connect(initMapStateToProps, { getMovieDetailStartAction: getMovieDetailStart })(Detail);

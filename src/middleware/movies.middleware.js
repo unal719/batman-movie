@@ -14,7 +14,7 @@ export default store => next => (action) => {
             return http.searchForMovie(payload)
                 .then(res => store.dispatch(searchForMovieSucceed(res)));
         case getMovieDetailStart().type:
-            return http.searchForMovie(payload)
+            return http.getMovieDetail(payload)
                 .then(res => store.dispatch(getMovieDetailSucceed(res)));
         default: next(action);
     }
