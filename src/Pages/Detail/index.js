@@ -1,3 +1,37 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
+import http from '../../utils/http'
 
-export default () => <div>detail page goes here</div>;
+class Detail extends PureComponent {
+    constructor() {
+        super();
+        this.state = {
+            detail: null
+        }
+    }
+
+    componentDidMount() {
+        const { match: { params: { id } } } = this.props;
+        http.getMovieDetail(id)
+            .then(detail =>
+                this.setState({ detail })
+            );
+    }
+
+    render() {
+        const { detail } = this.state;
+
+        if (detail) {
+            const { name, image: { original }, summary } = detail;
+            return (
+                <>
+                    <h5>{name}</h5>
+                    {/* <p>{summary}</p> */}
+                    <div dangerouslySetInnerHTML={{ __html: summary }} />
+                    <img src={original} alt={`${name} images goes here`} />
+                </>
+            );
+        }
+        return <div>Loading</div>
+    }
+}
+export default Detail;

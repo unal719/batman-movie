@@ -5,5 +5,11 @@ export default {
         return fetch(url)
             .then(res => res.json())
             .catch(reason => reason);
+    },
+    getMovieDetail: function (id) {
+        const url = `${this.baseUrl}shows/${id}`;
+        return fetch(url)
+            .then(res => res.json())
+            .catch(reason => reason);
     }
 }
