@@ -1,4 +1,3 @@
-/* global _REDUX_DEVTOOLS_EXTENSION_COMPOSE_: true */
 import { applyMiddleware, compose, createStore } from 'redux';
 
 import rootReducer from '../reducer';

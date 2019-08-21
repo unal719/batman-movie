@@ -4,7 +4,7 @@ import NavBarComponent from './nav-bar.component';
 const Layout = ({ children }) => (
   <>
     <NavBarComponent />
-    {children}
+      {children}
   </>
 );
 

@@ -37,9 +37,11 @@ class Detail extends PureComponent {
             const { name, image: { original }, summary } = movie;
             return (
                 <>
-                    <h5>{name}</h5>
-                    <div dangerouslySetInnerHTML={{ __html: summary }} />
-                    <img src={original} alt={`${name} images goes here`} />
+                    <div className="detail-movie">
+                        <h5>{name}</h5>
+                        <div dangerouslySetInnerHTML={{ __html: summary }} />
+                        <img src={original} alt={`${name} images goes here`} />
+                    </div>
                 </>
             );
         }
